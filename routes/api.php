@@ -21,11 +21,11 @@ Route::get('/', function(){
 
 
 // Api Videos
-Route::resource('video', 'API\VideosController', ['except' => ['create', 'edit']]);
+Route::resource('video', 'VideosController', ['except' => ['create', 'edit']]);
 
 
 // Api Playlists
-Route::resource('playlist', 'API\PlaylistsController', ['except' => ['create', 'edit']]);
+Route::resource('playlist', 'PlaylistsController', ['except' => ['create', 'edit']]);
 
 
 // Se a rota não existir

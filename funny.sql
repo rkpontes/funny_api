@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `playlist`
+-- Estrutura da tabela `playlists`
 --
 
-CREATE TABLE `playlist` (
+CREATE TABLE `playlists` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -54,7 +54,7 @@ CREATE TABLE `videos` (
 --
 -- Índices para tabela `playlist`
 --
-ALTER TABLE `playlist`
+ALTER TABLE `playlists`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -71,7 +71,7 @@ ALTER TABLE `videos`
 --
 -- AUTO_INCREMENT de tabela `playlist`
 --
-ALTER TABLE `playlist`
+ALTER TABLE `playlists`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -88,7 +88,7 @@ ALTER TABLE `videos`
 -- Limitadores para a tabela `videos`
 --
 ALTER TABLE `videos`
-  ADD CONSTRAINT `fk_video_playlist` FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_video_playlist` FOREIGN KEY (`playlist_id`) REFERENCES `playlists` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
