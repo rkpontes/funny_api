@@ -83,20 +83,8 @@ class VideosController extends Controller
     }
 
     private function getYoutubeIdFromUrl($url) {
-        $parts = parse_url($url);
-        if(isset($parts['query'])){
-            parse_str($parts['query'], $qs);
-            if(isset($qs['v'])){
-                return $qs['v'][1];
-            }else if(isset($qs['vi'])){
-                return $qs['vi'][1];
-            }
-        }
-        if(isset($parts['path'])){
-            $path = explode('/', trim($parts['path'], '/'));
-            return $path[count($path)-1][1];
-        }
-        return false;
+        preg_match('/(http(s|):|)\/\/(www\.|)yout(.*?)\/(embed\/|watch.*?v=|)([a-z_A-Z0-9\-]{11})/i', $url, $results);
+        return $results[6];
     }
 
 
