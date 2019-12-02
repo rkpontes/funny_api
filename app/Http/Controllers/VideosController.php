@@ -87,14 +87,14 @@ class VideosController extends Controller
         if(isset($parts['query'])){
             parse_str($parts['query'], $qs);
             if(isset($qs['v'])){
-                return $qs['v'];
+                return $qs['v'][1];
             }else if(isset($qs['vi'])){
-                return $qs['vi'];
+                return $qs['vi'][1];
             }
         }
         if(isset($parts['path'])){
             $path = explode('/', trim($parts['path'], '/'));
-            return $path[count($path)-1];
+            return $path[count($path)-1][1];
         }
         return false;
     }
