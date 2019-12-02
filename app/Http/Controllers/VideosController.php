@@ -28,7 +28,7 @@ class VideosController extends Controller
         $v = new Video();
         $v->title = $request->title;
         $v->description = $request->description;
-        $v->youtube_key = getYoutubeIdFromUrl($request->youtubeUri);
+        $v->youtube_key = $this->getYoutubeIdFromUrl($request->youtubeUri);
         $v->playlist_id = $request->playlist_id;
         $saved = $v->save();
 
@@ -56,7 +56,7 @@ class VideosController extends Controller
         $v = Video::find($video);
         $v->title = $request->title;
         $v->description = $request->description;
-        $v->youtube_key = $request->youtube_key;
+        $v->youtube_key = $this->getYoutubeIdFromUrl($request->youtubeUri);
         $v->playlist_id = $request->playlist_id;
         $saved = $v->save();
 
