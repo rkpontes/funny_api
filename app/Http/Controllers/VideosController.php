@@ -24,10 +24,11 @@ class VideosController extends Controller
     }
 
     public function store(Request $request){
+
         $v = new Video();
         $v->title = $request->title;
         $v->description = $request->description;
-        $v->youtube_key = $request->youtube_key;
+        $v->youtube_key = getYoutubeIdFromUrl($request->youtubeUri);
         $v->playlist_id = $request->playlist_id;
         $saved = $v->save();
 
@@ -79,6 +80,23 @@ class VideosController extends Controller
             return response()->json(['message'   => 'Record not found'], 404);
         }
 
+    }
+
+    private function getYoutubeIdFromUrl($url) {
+        $parts = parse_url($url);
+        if(isset($parts['query'])){
+            parse_str($parts['query'], $qs);
+            if(isset($qs['v'])){
+                return $qs['v'];
+            }else if(isset($qs['vi'])){
+                return $qs['vi'];
+            }
+        }
+        if(isset($parts['path'])){
+            $path = explode('/', trim($parts['path'], '/'));
+            return $path[count($path)-1];
+        }
+        return false;
     }
 
 
