@@ -83,8 +83,8 @@ class VideosController extends Controller
     }
 
     private function getYoutubeIdFromUrl($url) {
-        preg_match("#([\/|\?|&]vi?[\/|=]|youtu\.be\/|embed\/)([a-zA-Z0-9_-]+)#", $url, $matches);
-        return end($matches);
+        parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
+        return $my_array_of_vars['v'];
     }
 
 
