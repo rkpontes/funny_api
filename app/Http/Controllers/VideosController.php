@@ -28,7 +28,7 @@ class VideosController extends Controller
 
         //dd($request);
 
-        return response().json($request);
+        return response()->json($request);
 
         $v = new Video();
         $v->title = $request->title;
