@@ -25,13 +25,14 @@ class VideosController extends Controller
 
     public function store(Request $request){
 
-        return response()->json($request);
-
         $v = new Video();
         $v->title = $request->title;
         $v->description = $request->description;
         $v->youtube_key = $this->getYoutubeIdFromUrl($request->youtubeUri);
         $v->playlist_id = $request->playlist_id;
+
+        return response()->json($v);
+
         $saved = $v->save();
 
         if($saved)
