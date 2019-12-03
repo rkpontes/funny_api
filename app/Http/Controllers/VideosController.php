@@ -31,7 +31,7 @@ class VideosController extends Controller
         $v->youtube_key = $this->getYoutubeIdFromUrl($request->youtubeUri);
         $v->playlist_id = $request->playlist_id;
 
-        return response()->json($v);
+        //return response()->json($v);
 
         $saved = $v->save();
 
