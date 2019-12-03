@@ -25,7 +25,7 @@ class VideosController extends Controller
 
     public function store(Request $request){
 
-        //return response()->json($request);
+        return response()->json($request);
 
         $v = new Video();
         $v->title = $request->title;
